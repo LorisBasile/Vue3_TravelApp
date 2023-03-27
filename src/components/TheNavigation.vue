@@ -13,5 +13,4 @@
             color: rgb(0, 229, 255);
             border-bottom: 2px solid rgb(89, 0, 255) ;
         }
-
     </style>
