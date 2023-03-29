@@ -2,31 +2,36 @@
     <section v-if="destination" class="destination">
         <h1>{{ destination.name }}</h1>
         <div class="destination-details">
-            <img :src="`/images/${destination.image}`" :alt="destination.name">
+            <img :src="'/images/'+ destination.image " :alt="destination.name">
             <p>{{ destination.description }}</p>
+        </div>
+    </section>
+
+    <section class="experiences">
+        <h2> Top Esperienze in  {{ destination.name }}</h2>
+        <div class="cards">
+            <router-link v-for="experience in destination.experiences" :key="experience.slug" 
+            :to="{name: 'experience.show', params:{experienceSlug:experience.slug}}">
+                <ExperienceCard  :experience="experience"/>
+            </router-link>
         </div>
     </section>
 </template>
 
 <script>
     import sourceData from '@/data.json'
+    import ExperienceCard from '@/components/ExperienceCard.vue'
     export default{
-        data(){
-            return {destination: null}
+        components:{ExperienceCard},
+        props: {
+            id:{type: Number, required: true,}
         },
         computed:{
-            destinationId(){
-                return parseInt(this.$route.params.id)
+            destination(){
+                return sourceData.destinations.find(
+                    (destination) => destination.id === this.id
+                );
             },
         },
-        methods:{
-            async initData(){
-                const reponse = await fetch("https://travel-dummy-api.netlify.app/" + this.$route.params.slug + ".json")
-                this.destination = await reponse.json()
-            }
-        },
-        async created(){
-            this.initData()            
-        }
     }
 </script>

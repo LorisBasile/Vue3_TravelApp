@@ -1,10 +1,21 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory , useRoute} from "vue-router";
 import HomeView from "../views/HomeView.vue";
 
 
 const routes = [
   { path: "/", name: "home", component: HomeView },
-  { path: "/Destination/:id/:slug", name:"destination.show", component: () => import('@/views/DestinationShow.vue') },
+  { 
+    path: "/Destination/:id/:slug", 
+    name:"destination.show", 
+    component: () => import('@/views/DestinationShow.vue'),
+    props: route => ({...route.params,  id: parseInt(route.params.id)})
+  },
+  {
+    path: '/destination/:id/:slug/:experienceSlug',
+    name: 'experience.show',
+    component: () => import('@/views/ExperienceShow.vue'),
+    props: route => ({ ...route.params, id: parseInt(route.params.id)})
+  }
 ];
 
 const router = createRouter({
