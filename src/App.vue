@@ -2,7 +2,7 @@
     <TheNavigation></TheNavigation>
     <div class="container">
       <router-view v-slot="{Component}">
-        <transition name="slide" mode="out-in">
+        <transition name="moveUp" >
           <component :is="Component" :key="$route.path"></component>
         </transition>
       </router-view>
@@ -18,15 +18,23 @@
   </script>
 
   <style lang="css">
-    .slide-enter-active,
-    .slide-leave-active{
-      transition: opacity 1s, transform 1s;
-      
+    .moveUp-enter-active {
+      animation: fedeIn 1.3s ease-in;
     }
-    .slide-ender-from,
-    .slide-leave-to{
-      opacity: 0;
-      transform: translateX( -30%);
+
+    @keyframes fedeIn {
+      0% {opacity:0;}
+      50% {opacity:0.5;}
+      100% {opacity:1;}
+    }
+
+    .moveUp-leave-active{
+      animation: moveUp 0.3s ease-in;
+    }
+
+    @keyframes moveUp {
+      0% {transform: translateY(0);}
+      90% {transform: translateY(-400px);}
     }
 
   </style>
