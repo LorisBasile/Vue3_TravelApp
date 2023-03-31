@@ -18,7 +18,7 @@
   </script>
 
   <style lang="css">
-    .moveUp-enter-active {
+    /* .moveUp-enter-active {
       animation: fedeIn 1.3s ease-in;
     }
 
@@ -35,6 +35,6 @@
     @keyframes moveUp {
       0% {transform: translateY(0);}
       90% {transform: translateY(-400px);}
-    }
+    } */
 
   </style>

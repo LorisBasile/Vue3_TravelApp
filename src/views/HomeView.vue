@@ -15,8 +15,8 @@
   export default {
     data(){
       return {
-        destinations: sourceData.destinations,
-      };
-    },
-  };
+        destinations: sourceData.destinations
+        };
+      }
+    };
 </script>
