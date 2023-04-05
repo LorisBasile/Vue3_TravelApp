@@ -17,7 +17,7 @@
         methods:{
             loguot(){
                 window.user = null 
-                this.$router.push({name:'home'})
+                this.$router.replace({name:'home', query:{loguot:null } })
             }
         }
     }

@@ -1,7 +1,8 @@
   <template>
     <TheNavigation></TheNavigation>
     <div class="container">
-      <router-view v-slot="{Component}">
+      <router-view class="view left-sidebar" name="LeftSidebar"></router-view>
+      <router-view v-slot="{Component}" class="main-view">
         <transition name="moveUp" >
           <component :is="Component" :key="$route.path"></component>
         </transition>
@@ -18,23 +19,13 @@
   </script>
 
   <style lang="css">
-    /* .moveUp-enter-active {
-      animation: fedeIn 1.3s ease-in;
+    .container{
+      display: flex;
     }
-
-    @keyframes fedeIn {
-      0% {opacity:0;}
-      50% {opacity:0.5;}
-      100% {opacity:1;}
+    .left-sidebar{
+      width: 20%;
     }
-
-    .moveUp-leave-active{
-      animation: moveUp 0.3s ease-in;
+    .main-view{
+      width: 100%;
     }
-
-    @keyframes moveUp {
-      0% {transform: translateY(0);}
-      90% {transform: translateY(-400px);}
-    } */
-
   </style>

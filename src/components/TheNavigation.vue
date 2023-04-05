@@ -1,10 +1,11 @@
     <template>
         <nav id="nav">
-            <router-link to="/" id="logo">Travel App</router-link> 
-             <router-link v-for="destination in destinations" :key="destination.id" :to="{ name: 'destination.show', params: {id:destination.id, slug:destination.slug}}"  >
+            <AppLink to="/" id="logo">Travel App</AppLink> 
+             <AppLink v-for="destination in destinations" :key="destination.id" :to="{ name: 'destination.show', params: {id:destination.id, slug:destination.slug}}"  >
                         {{destination.name}}
-            </router-link> 
-            <router-link :to="{name: 'protected'}" >Dashboard  </router-link>
+            </AppLink> 
+            <AppLink :to="{name: 'protected'}" >Dashboard  </AppLink>
+            <AppLink to="http://vueschool.io" >Vue school  </AppLink>
         </nav>
     </template>
 
