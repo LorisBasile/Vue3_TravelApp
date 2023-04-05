@@ -22,9 +22,9 @@
         methods:{
             login(){
                 window.user = this.username
-                this.$router.push({name: 'protected'})
+                const redirectPath = this.$route.redirect || '/protected'
+                this.$router.push(redirectPath)
             }
         }
     }
-
 </script>
